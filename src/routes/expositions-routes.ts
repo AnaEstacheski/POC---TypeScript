@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { expositionSchema } from "../schemas/exposition.js";
-import { schemaValidation } from "../middlewares/schemaValidation.js";
+import { schemaValidation } from "../middlewares/schema-validation.js";
 
 const expositionsRoutes = Router();
 

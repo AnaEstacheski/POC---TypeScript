@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
-import expositionsRoutes from "./expositionsRoutes.js";
-import artworksRoutes from "./artistsRoutes.js";
-import artistsRoutes from "./artistsRoutes.js";
+import expositionsRoutes from "./expositions-routes.js";
+import artworksRoutes from "./artworks-routes.js";
+import artistsRoutes from "./artists-routes.js";
 
 const routes = Router();
 

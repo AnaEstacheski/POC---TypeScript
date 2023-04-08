@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model artists {
+  id          Int           @id @default(autoincrement())
+  name        String        @db.VarChar(20)
+  createdAt   DateTime?     @default(now()) @db.Timestamp(6)
+  artworks    artworks[]
+  expositions expositions[]
+}
+
+model artworks {
+  id          Int           @id @default(autoincrement())
+  work_title  String        @db.VarChar(200)
+  artist_name Int?
+  createdAt   DateTime?     @default(now()) @db.Timestamp(6)
+  artists     artists?      @relation(fields: [artist_name], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  expositions expositions[]
+}
+
+model expositions {
+  id           Int       @id @default(autoincrement())
+  gallery_name String    @db.VarChar(200)
+  artwork      Int?
+  artist       Int?
+  createdAt    DateTime? @default(now()) @db.Timestamp(6)
+  artists      artists?  @relation(fields: [artist], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  artworks     artworks? @relation(fields: [artwork], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}

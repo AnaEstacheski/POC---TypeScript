@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { artWorkSchema } from "../schemas/artworks.js";
-import { schemaValidation } from "../middlewares/schemaValidation.js";
+import { schemaValidation } from "../middlewares/schema-validation.js";
 
 const artworksRoutes = Router();
 

@@ -1,17 +1,5 @@
 import prisma from "../config/database.js";
-import {  Exposition, Artist, Artwork } from "../protocols";
-
-export async function insertArtistRepository(artist: Artist) {
-    return prisma.artists.create({
-        data: artist
-    });
-}
-
-export async function insertArtworkRepository(artwork: Artwork) {
-    return prisma.artworks.create({
-        data: artwork
-    });
-}
+import { Exposition } from "../protocols";
 
 export async function insertExpositionRepository(exposition: Exposition) {
     return prisma.expositions.create({

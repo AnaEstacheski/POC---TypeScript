@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { ObjectSchema } from "joi";
 import { invalidDataError } from "../errors/index.js";
+import httpStatus from "http-status";
 
 export function schemaValidation(schema: ObjectSchema<any>) {
     return (req: Request, res: Response, next: NextFunction) => {
@@ -10,7 +11,7 @@ export function schemaValidation(schema: ObjectSchema<any>) {
         if (!error) {
             next();
         } else {
-            res.status(400).send(invalidDataError(error.details.map((d) => d.message)));
+            res.status(httpStatus.BAD_REQUEST).send(invalidDataError(error.details.map((d) => d.message)));
         }
     };
 }

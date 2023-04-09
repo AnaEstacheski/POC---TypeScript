@@ -9,7 +9,17 @@ export async function insertExpositionRepository(exposition: Exposition) {
 }
 
 export async function getExpositionRepository() {
-    return prisma.expositions.findMany();
+    return prisma.expositions.findMany({
+        select: {
+            gallery_name: true,
+            artworks: {
+                select:{
+                    artist_name: true,
+                    work_title: true
+                }
+            }
+        }
+    });
 }
 
 export async function updateExpositionRepository(exposition: Exposition, id: number) {
